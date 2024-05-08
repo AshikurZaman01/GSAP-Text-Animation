@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Home = () => {
 
@@ -10,21 +12,25 @@ const Home = () => {
 
         const splittedText = h1Text.split('');
 
-        let empty = "";
+        var empty = "";
 
         splittedText.forEach((letter) => {
-            empty += letter;
-            empty += letter;
-
+            empty += `<span>${letter}</span>`;
         })
-
-        h1.innerText = empty;
 
     }, [])
 
+    useGSAP(() => {
+        gsap.from('h1', {
+            y: 100,
+            duration: 1,
+             delay: 0.5,
+             opacity:0
+        })
+    })
 
     return (
-        <div className="flex justify-center items-center h-screen bg-slate-900">
+        <div className="flex justify-center items-center h-screen  bg-slate-900">
             <div>
                 <h1 className="text-9xl font-semibold text-gray-500">Bangladesh</h1>
             </div>

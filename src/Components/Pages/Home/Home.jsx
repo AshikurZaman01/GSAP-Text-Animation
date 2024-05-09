@@ -6,28 +6,21 @@ const Home = () => {
 
 
     useEffect(() => {
+        const h1 = document.querySelector("h1");
+        const h1Text = h1.textContent;
 
-        const h1 = document.querySelector('h1');
-        const h1Text = h1.innerText;
+        const splittedTExt = h1Text.split("");
 
-        const splittedText = h1Text.split('');
+        let ee = "";
+        splittedTExt.map((lett, indx) => {
+            return (
 
-        var empty = "";
-
-        splittedText.forEach((letter) => {
-            empty += `<span>${letter}</span>`;
-        })
-
-    }, [])
-
-    useGSAP(() => {
-        gsap.from('h1', {
-            y: 100,
-            duration: 1,
-             delay: 0.5,
-             opacity:0
+                ee += `<span key={indx} className="text-9xl font-semibold text-gray-500">${lett}</span>`
+            )
         })
     })
+
+
 
     return (
         <div className="flex justify-center items-center h-screen  bg-slate-900">

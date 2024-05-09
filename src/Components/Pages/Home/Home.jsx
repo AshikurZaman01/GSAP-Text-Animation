@@ -12,6 +12,7 @@ const Home = () => {
         const splittedTExt = h1Text.split("");
 
         let ee = "";
+        let ee = "";
         splittedTExt.map((lett, indx) => {
             return (
 

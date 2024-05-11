@@ -1,33 +1,27 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const Home = () => {
-
+    const [text, setText] = useState([]);
 
     useEffect(() => {
-        const h1 = document.querySelector("h1");
-        const h1Text = h1.textContent;
+        const text = 'Bangladesh';
+        const splittedText = text.split('');
+        setText(splittedText);
 
-        const splittedTExt = h1Text.split("");
-
-        let ee = "";
-        let ee = "";
-        splittedTExt.map((lett, indx) => {
-            return (
-
-                ee += `<span key={indx} className="text-9xl font-semibold text-gray-500">${lett}</span>`
-            )
-        })
-    })
-
-
+        gsap.from('span.gsapText', {
+            y: 300,
+            opacity: 0,
+            duration: 1,
+            stagger:0.5
+        });
+    }, []);
 
     return (
-        <div className="flex justify-center items-center h-screen  bg-slate-900">
-            <div>
-                <h1 className="text-9xl font-semibold text-gray-500">Bangladesh</h1>
-            </div>
+        <div className="flex justify-center items-center h-screen bg-slate-900">
+            {text.map((item, index) => (
+                <span className="gsapText text-white text-5xl font-bold" key={index}>{item}</span>
+            ))}
         </div>
     );
 };
